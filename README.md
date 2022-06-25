@@ -9,7 +9,7 @@ Note: The bot cannot upload the file directly to discord since most volumes are 
 
 The bot requires a manga id, as well as the volume you wish to download
 
-To get the manga id of the manga you want, go to mangadex.org, search for the manga of your choice and you will see the id in the url
+To get the manga id of the manga you want, go to [mangadex.org](https://mangadex.org/), search for the manga of your choice and you will see the id in the url
 
 ![image](https://user-images.githubusercontent.com/59373798/175753814-2e670772-1f9d-4e8b-a5a8-ed8447f12960.png)
 
