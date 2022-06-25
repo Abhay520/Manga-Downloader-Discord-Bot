@@ -80,7 +80,7 @@ Example 2:
 
 # Using and configuring the bot
 
-There are 2 things you need to do to able to use it:
+There are a few things you need to do to able to use it:
 
 Make a bot using discord's developer portal
 There are a lot of resources on how to do that online, such as :
