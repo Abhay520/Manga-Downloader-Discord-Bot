@@ -27,7 +27,7 @@ After that, the bot will send the google link of the manga in pdf, which you can
 ![image](https://user-images.githubusercontent.com/59373798/175753961-7087d4d5-46c5-4598-84dc-ea29951da600.png)
 
 
-
+# Other random commands
 
 I also made a command to perform mathematical calculations and conversions using the math.js api 
 (https://mathjs.org/)
