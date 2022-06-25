@@ -1,4 +1,7 @@
 # Manga-Downloader-Discord-Bot
+
+# What the bot does
+
 Discord bot which downloads volumes of your favorite mangas
 
 The bot uses the mangadex.org api to download manga chapters from the volume of your choice, as well as the cover page of that volume, merges them into a pdf file and uploads it to a google drive service account and sends the link to that file on discord
@@ -71,7 +74,7 @@ Example 2:
 
 ![image](https://user-images.githubusercontent.com/59373798/175754121-492dd37a-bf32-46d8-94f5-ca07542bc0ed.png)
 
-NOW TO USE THE BOT:
+# Using and configuring the bot
 
 There are 2 things you need to do to able to use it:
 
