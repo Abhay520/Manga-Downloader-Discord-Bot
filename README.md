@@ -99,7 +99,8 @@ Do the same thing for your bot, that is right click your bot profiles, and selec
 
 Finally create a google drive service account, which allows you to upload files to your google drive account directly
 Watch the first 5 mins of this video to learn how to do it : https://www.youtube.com/watch?v=Z2MCxblgPoc&t=393s
-Copy the contents of the file you will download to config/googleDriveCred.json and you are ready to go!
+Copy the contents of the file you will download to config/googleDriveCred.json.
+Create a folder called "manga" on the root directory and you are ready to go!
 
 Just run "npm start" on the root directory to use the bot
 
