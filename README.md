@@ -29,6 +29,10 @@ After that, the bot will send the google link of the manga in pdf, which you can
 
 ![image](https://user-images.githubusercontent.com/59373798/175753961-7087d4d5-46c5-4598-84dc-ea29951da600.png)
 
+I will leave this link here for the first volume of BERSERK I downloaded using this script
+
+https://drive.google.com/file/d/159ExBz0q58CNlwYIxkdmBok6BqLdx8ZV/view?usp=sharing
+
 
 # Other random commands
 
