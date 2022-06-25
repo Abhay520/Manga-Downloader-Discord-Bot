@@ -32,17 +32,24 @@ After that, the bot will send the google link of the manga in pdf, which you can
 I also made a command to perform mathematical calculations and conversions using the math.js api 
 (https://mathjs.org/)
 Command example:
+
 ![image](https://user-images.githubusercontent.com/59373798/175753992-475d1fc4-c5dc-409e-9abf-546ad85ec2c6.png)
+
 Response:
+
 ![image](https://user-images.githubusercontent.com/59373798/175754001-d4329108-7317-436b-8a08-c3307b9eb47d.png)
 
 Command example 2:
+
 ![image](https://user-images.githubusercontent.com/59373798/175754012-02ca09d2-d4ec-4127-b277-22ade8dca531.png)
+
 Response:
+
 ![image](https://user-images.githubusercontent.com/59373798/175754017-ef0398b5-6382-47e9-96e2-73d6c63db781.png)
 
 
 Theres also a simple ping command which returns the message latency of the bot
+
 ![image](https://user-images.githubusercontent.com/59373798/175754040-d333a3e0-9ac7-42f9-b5f8-1bb8e25f667f.png)
 
 Finally, I wanted to try using the nasa api to get some space pictures, so i ended up making a command for that as well
