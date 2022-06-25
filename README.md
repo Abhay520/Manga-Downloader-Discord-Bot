@@ -102,7 +102,7 @@ Watch the first 5 mins of this video to learn how to do it : https://www.youtube
 Copy the contents of the file you will download to config/googleDriveCred.json.
 Create a folder called "manga" on the root directory and you are ready to go!
 
-Just run "npm start" on the root directory to use the bot
+Just run "npm install" followed by "npm start" on the root directory to use the bot
 
 
 
