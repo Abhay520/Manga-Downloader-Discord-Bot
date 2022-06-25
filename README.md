@@ -13,7 +13,7 @@ To get the manga id of the manga you want, go to [mangadex.org](https://mangadex
 
 ![image](https://user-images.githubusercontent.com/59373798/175753814-2e670772-1f9d-4e8b-a5a8-ed8447f12960.png)
 
-For example, in the screenshot above, the id is 37f5cce0-8070-4ada-96e5-fa24b1bd4ff
+For example, in the screenshot above, the id is 37f5cce0-8070-4ada-96e5-fa24b1bd4ff9
 
 A discord slash command can then be sent, as shown below
 
