@@ -1,0 +1,21 @@
+{
+  "name": "discord_bot",
+  "version": "1.0.0",
+  "description": "A discord bot",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/deploy_commands.js && node src/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/rest": "^0.5.0",
+    "axios": "^0.27.2",
+    "discord-api-types": "^0.34.0",
+    "discord.js": "^13.8.0",
+    "googleapis": "^104.0.0",
+    "pdf-merger-js": "^3.4.0",
+    "pdfkit": "^0.13.0"
+  }
+}
