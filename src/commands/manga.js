@@ -32,8 +32,8 @@ class Manga {
             return dataArray[data].attributes.fileName
           }
         }
+        throw err;
       })
-      .catch(err => console.log(err))
   }
 
   downloadCoverImage = async volumeNo => {
@@ -70,10 +70,12 @@ class Manga {
         })
         return chapterIDs
       })
-      .catch(err => console.log(err))
   }
 
   downloadVolume = async volumeNo => {
+    //creating manga directory
+    let directory = "manga/"
+    if (!fs.existsSync(directory)){fs.mkdirSync(directory);}
     const start = Date.now()
     let mangaName
     await this.getMangaName().then(res => {
@@ -83,11 +85,11 @@ class Manga {
     await new Promise(resolve => setTimeout(resolve, 3000))
     const document = new PDFDocument({ size: 'A4' })
     document.pipe(
-      fs.createWriteStream(`manga/${mangaName}_Volume${volumeNo}.pdf`)
+      fs.createWriteStream(`${directory}${mangaName}_Volume${volumeNo}.pdf`)
     )
     let manga_chapids, manga_pageids, hash
-    let dir = 'manga/chapter'
-    let coverImagePath = `manga/${volumeNo}.jpg`
+    let chap_dir = `${directory}/chapter`
+    let coverImagePath = `${directory}/${volumeNo}.jpg`
     //store all the chapter ids in manga_chapids in form of a nested array [[name of chapter, chapter_id]]
     await this.getChapterIDsOfVolume(volumeNo).then(res => {
       manga_chapids = res
@@ -106,28 +108,27 @@ class Manga {
           hash = res.chapter.hash
           manga_pageids = res.chapter.dataSaver
         })
-        .catch(console.error)
       //for debugging
       console.log('Downloading chapter ' + manga_chapids[i][0])
       //create a directory for the chapter if it doesnt already exist
-      if (!fs.existsSync(`${dir} ${manga_chapids[i][0]}`)) {
-        fs.mkdirSync(`${dir} ${manga_chapids[i][0]}`, { recursive: true })
+      if (!fs.existsSync(`${chap_dir} ${manga_chapids[i][0]}`)) {
+        fs.mkdirSync(`${chap_dir} ${manga_chapids[i][0]}`, { recursive: true })
       }
       for (let j = 0; j < manga_pageids.length; j++) {
         console.log('Downloading page number ' + (j + 1))
         await download_image(
           `https://uploads.mangadex.org/data-saver/${hash}/${manga_pageids[j]}`,
-          `${dir} ${manga_chapids[i][0]}/page ${j + 1}.jpg`
+          `${chap_dir} ${manga_chapids[i][0]}/page ${j + 1}.jpg`
         )
         await new Promise(resolve => setTimeout(resolve, 300))
         document.addPage()
-        document.image(`${dir} ${manga_chapids[i][0]}/page ${j + 1}.jpg`, {
+        document.image(`${chap_dir} ${manga_chapids[i][0]}/page ${j + 1}.jpg`, {
           fit: [500, 1000],
           align: 'center'
         })
       }
       //deleting image chapter directory, leaving only pdf files
-      fs.rm(`${dir} ${manga_chapids[i][0]}`, { recursive: true }, err => {
+      fs.rm(`${chap_dir} ${manga_chapids[i][0]}`, { recursive: true }, err => {
         if (err) console.log(err)
       })
     }
@@ -151,7 +152,6 @@ class Manga {
       .then(res => {
         return res.data
       })
-      .catch(err => console.log(err))
   }
 
   //function which returns shortest english name of the manga (returns a promise) and removes non-alphabets
@@ -173,7 +173,6 @@ class Manga {
         let name = names.reduce(shorter)
         return name.replace(/[^0-9a-z] /gi, ' ')
       })
-      .catch(err => console.log(err))
   }
 
   //uploads volume to google drive
@@ -199,7 +198,6 @@ const download_image = async (url, image_path) => {
             .on('error', e => reject(e))
         })
     )
-    .catch(error => console.log(error))
 }
 
 //uses google drive api to create and upload pdf manga volume
@@ -260,9 +258,16 @@ module.exports = {
     const volumeNumber = interaction.options.get('volume_no').value
     const manga = new Manga(manga_id)
     await interaction.deferReply()
-    await manga.downloadVolume(volumeNumber)
-    await manga.uploadVolume(volumeNumber).then(res => {
-      interaction.editReply(res)
-    })
+    try{
+      await manga.downloadVolume(volumeNumber)
+      await manga.uploadVolume(volumeNumber).then(res => {
+        interaction.editReply(res)
+      })
+    }
+    catch(err){
+      fs.rm("manga/", { recursive: true }, (err) => {if (err) throw err;});
+      interaction.editReply("An error occured, make sure the manga_id and volume number is valid")
+    }
   }
 }
+
